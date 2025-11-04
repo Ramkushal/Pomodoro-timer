@@ -7,11 +7,14 @@ const secondsDisplay = document.getElementById("seconds");
 const strtBtn = document.getElementById("start");
 const pauseBtn = document.getElementById("pause");
 const resetBtn = document.getElementById("reset");
+const taskList = document.getElementById("task-list");
+const taskBtn = document.getElementById("add-task");
+const taskTxt = document.getElementById("new-task");
 const modes = document.querySelector(".modes");
 
 class app {
   constructor(workTime) {
-    this.init(workTime * 3);
+    this.init(workTime * 60);
     this.mode = document.getElementById("focus");
     this.curMode = "focus";
   }
@@ -25,8 +28,8 @@ class app {
     this.totalLaps = 2;
     this.modes = {
       focus: this.workTime,
-      short: 5,
-      long: 10,
+      short: 30,
+      long: 1 * 60,
     };
     this.updateDisplay();
   }
@@ -110,9 +113,21 @@ class app {
       this.init(this.workTime);
     }
   }
+
+  addTask() {
+    if (!taskTxt.value) return;
+    taskList.insertAdjacentHTML("afterbegin", `<li>${taskTxt.value}</li>`);
+    taskTxt.value = "";
+  }
 }
 
-const pomodoro = new app(1);
+const pomodoro = new app(2);
 strtBtn.addEventListener("click", pomodoro.startTimer.bind(pomodoro));
 pauseBtn.addEventListener("click", pomodoro.pauseTimer.bind(pomodoro));
 resetBtn.addEventListener("click", pomodoro.resetTimer.bind(pomodoro));
+taskBtn.addEventListener("click" || "enter", pomodoro.addTask.bind(pomodoro));
+taskTxt.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    pomodoro.addTask();
+  }
+});
