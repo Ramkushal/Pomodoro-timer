@@ -1,4 +1,6 @@
 "use strict";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 ///////////////////////////////
 
@@ -27,8 +29,12 @@ const completedList = document.getElementById("completed-list");
 const clearCompletedBtn = document.getElementById("clear-completed");
 const laps = document.getElementById("laps");
 const lapsText = document.getElementById("laps-text");
-const longBreakAudio = new Audio("./longbreak.mp3");
-const shortBreakAudio = new Audio("./shortBreak.mp3");
+const longBreakAudio = new Audio(
+  "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
+);
+const shortBreakAudio = new Audio(
+  "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
+);
 
 let previouslyFocusedElement = null;
 
@@ -126,9 +132,9 @@ class app {
     this.completedTasks = [];
     this.modes = null;
     this.themeRoot = document.body;
-    this.totalLaps = 2;
+    this.totalLaps = 4;
     this.loaded = this.loadState();
-    if (!this.loaded) this.init(25 * 60, 5 * 60, 15 * 60, 2);
+    if (!this.loaded) this.init(25 * 60, 5 * 60, 15 * 60, 4);
     // this.mode = document.getElementById("focus");
     this.curMode = "focus";
     this.updateTheme();
