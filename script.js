@@ -186,7 +186,6 @@ class app {
   }
 
   changeMode(mode) {
-    console.log(`changing mode to ${mode}`);
     this.curMode = mode;
     syncModeButtonState(mode);
     this.timeLeft = this.modes[mode];
