@@ -91,7 +91,7 @@ LocalStorage — persistence
 
 📦 Getting Started
 1️⃣ Clone the repo
-git clone https://github.com/<your-username>/<your-repo>.git
+git clone https://github.com/Ramkushal/Pomodoro-timer.git
 cd <your-repo>
 
 2️⃣ Start live-server or run "npm run start"
